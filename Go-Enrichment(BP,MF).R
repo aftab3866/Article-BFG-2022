@@ -5,9 +5,9 @@ library ("org.Hs.eg.db")
 
 AB <- read.csv ("Input.csv")  # Upload file ####
 
-uniprot2entrezID <- read.csv("uniprot2entrezID.csv")  ## for ENTREZ ID to GENE sybole ##
+uniprot2entrezID <- read.csv("uniprot2entrezID.csv")  ## for ENTREZ ID to GENE symbole ##
 
-## Attach Entrez IDs into the inputr files
+## Attach Entrez IDs into the input files
 
 attach.entregene <- function (x,uniprotkb_col) {
   output <- merge (x, uniprot2entrezID, by.x=uniprotkb_col,by.y="UNIPROTKB",all.x=TRUE,sort=F)
@@ -17,9 +17,9 @@ attach.entregene <- function (x,uniprotkb_col) {
 
 input <- attach.entregene(AB,"Entry")       ### attach ENTREZ IDs in the table
 
-y <- c(input[, 4])    ## once Entrez ID attached with Input file, select only ENTERZ ID colum
+y <- c(input[, 4])    ## once Entrez ID attached with Input file, select only ENTERZ ID column
 
-#############for Pathway enrichment analysis ########################## ont = "BP", "MF", and "CC"
+############# for Pathway enrichment analysis ########################## ont = "BP", "MF", and "CC"
 
 gse <- enrichGO(y,  org.Hs.eg.db, keyType = "ENTREZID",ont = "BP", pvalueCutoff = 0.05, 
                 pAdjustMethod = "BH", qvalueCutoff = 0.2, minGSSize = 10, 
