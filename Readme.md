@@ -1,5 +1,4 @@
 # Reactome Pathway and GO Enrichment Analysis
-===========================================
 ### Overview
 These scripts are designed to perform pathway and Gene Ontology (GO) enrichment analysis for proteins in the identified modules. The analysis is performed using the **Fisher's exact test** in the **Bioconductor package 'clusterProfiler'**.
 
